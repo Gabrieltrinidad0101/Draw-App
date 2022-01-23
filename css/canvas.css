@@ -1,0 +1,4 @@
+.containerCanvas{
+    grid-area: canvas;
+    background:#fff;
+}

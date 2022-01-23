@@ -1,0 +1,20 @@
+.tools{
+    grid-area: tools;
+    display: grid;
+    grid-template-rows: repeat(2,30px);
+    gap: 10px;
+    padding: 1px 5px;
+    justify-content: center;
+}
+
+.tools > button{
+    background: transparent;
+    color: #fff;
+    border: None;
+    font-size: 20px;
+    padding: 5px
+}
+
+.tools > button:hover{
+    border: 1px solid #000;
+}
