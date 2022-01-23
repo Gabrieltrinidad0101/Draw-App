@@ -1,7 +1,7 @@
 import PaintBrush from "./paintBrush/paintBrush.js";
 import ClearBrush from "./clearBrush/clearBrush.js";
 import FunctionToExecute from "./functionToExecute.js";
-import Config from "./config.js";
+
 class Canvas{
     constructor(){
         //html
@@ -16,11 +16,6 @@ class Canvas{
         this.functionToExecute = new FunctionToExecute()
         this.paintBrush = new PaintBrush(this.canvas,this.ctx)
         this.clearBrush = new ClearBrush(this.canvas,this.ctx)
-
-        //config
-        const config = new Config()
-        config.setValue("color","black")
-        config.setValue("lineWidth","10")
 
         //set value of default in functionToExecute
         this.functionToExecute.setFunctions(this.paintBrush)
