@@ -1,23 +1,29 @@
-class FunctionToExecute{
-    #mouseDownFn = null
-    #mouseMoveFn = null
-    #mouseUpFn = null
+let mouseDownFn = null
+let mouseMoveFn = null
+let mouseUpFn = null
 
-    setFunctions(containerFunctions){
-        this.#mouseDownFn = e =>containerFunctions.mouseDownFn(e)
-        this.#mouseMoveFn = e =>containerFunctions.mouseMoveFn(e)
-        this.#mouseUpFn = e =>containerFunctions.mouseUpFn(e)
+class FunctionToExecute{
+    setMouseDownFn(fn){
+        mouseDownFn = e=>fn(e)
+    }
+
+    setMouseMoveFn(fn){
+        mouseMoveFn = e=>fn(e)
+    }
+
+    setMouseUpFn(fn){
+        mouseUpFn = e=>fn(e)
     }
 
     runMouseDownFn(e){
-        this.#mouseDownFn(e)
+        mouseDownFn(e)
     }
 
     runMouseMoveFn(e){
-        this.#mouseMoveFn(e)
+        mouseMoveFn(e)
     }
     runMouseUpFn(e){
-        this.#mouseUpFn(e)
+        mouseUpFn(e)
     }
 
 }

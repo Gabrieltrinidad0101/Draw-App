@@ -1,14 +1,9 @@
 import Config from "../config.js"
-class PaintBrush{
+import BaseTool from "../baseTool/baseTool.js"
+class PaintBrush extends BaseTool{
     constructor(canvas,ctx,id="paintBrush"){
-        this.canvas = canvas
-        this.ctx =  ctx
-        this.buttonPaintBrush = document.getElementById(id)
+        super(canvas,ctx,id)
         this.config = new Config()
-    }
-
-    click(cb){
-        this.buttonPaintBrush.addEventListener("click",cb)
     }
 
     drawLine = _=>{
@@ -20,15 +15,13 @@ class PaintBrush{
     mouseDownFn = e =>{
         this.canDraw = true
         this.ctx.beginPath();
-        this.ctx.moveTo(e.clientX - this.canvas.offsetLeft,
-                        e.clientY - this.canvas.offseTop)
+        this.ctx.moveTo(this.mouseX(e),this.mouseY(e))
         this.drawLine()
     }
 
     mouseMoveFn(e){
         if(this.canDraw){
-            this.ctx.lineTo(e.clientX - this.canvas.offsetLeft,
-                            e.clientY - this.canvas.offsetTop)
+            this.ctx.lineTo(this.mouseX(e),this.mouseY(e))
             this.drawLine(e)
         }
     }

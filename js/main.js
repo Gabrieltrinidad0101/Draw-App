@@ -1,5 +1,7 @@
 import PaintBrush from "./paintBrush/paintBrush.js";
 import ClearBrush from "./clearBrush/clearBrush.js";
+import FillerBrush from "./fillerBrush/fillerBrush.js";
+import ColorPicker from "./colorPicker/colorPicker.js"
 import FunctionToExecute from "./functionToExecute.js";
 
 class Canvas{
@@ -11,20 +13,26 @@ class Canvas{
 
         this.canvas.width = this.containerCanvas.clientWidth
         this.canvas.height = this.containerCanvas.clientHeight
+
+        //set background
+        this.ctx.beginPath()
+        this.ctx.fillStyle = "white";
+        this.ctx.fillRect(0, 0, canvas.width, canvas.height);
+        this.ctx.closePath()
         
         //class
         this.functionToExecute = new FunctionToExecute()
         this.paintBrush = new PaintBrush(this.canvas,this.ctx)
         this.clearBrush = new ClearBrush(this.canvas,this.ctx)
-
+        this.fillerBrush = new FillerBrush(this.canvas,this.ctx)
+        this.colorPicker = new ColorPicker(this.canvas,this.ctx)
+        
         //set value of default in functionToExecute
-        this.functionToExecute.setFunctions(this.paintBrush)
+        this.functionToExecute.setMouseDownFn(e=>this.paintBrush.mouseDownFn(e))
+        this.functionToExecute.setMouseMoveFn(e=>this.paintBrush.mouseMoveFn(e))
+        this.functionToExecute.setMouseUpFn(e=>this.paintBrush.mouseUpFn(e))
         
         //events
-        this.paintBrush.click(_=>{
-            this.functionToExecute.setFunctions(this.paintBrush)
-        })
-        this.clearBrush.click(_=>this.functionToExecute.setFunctions(this.clearBrush))
         this.canvas.addEventListener("mousedown",e=>{
             this.functionToExecute.runMouseDownFn(e)
         })
