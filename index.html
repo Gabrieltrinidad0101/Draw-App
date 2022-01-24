@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="./css/buttons.css">
     <link rel="stylesheet" href="./css/canvas.css">
     <link rel="stylesheet" href="./css/animation.css">
+    <link rel="stylesheet" href="./css/advancedColorPicker.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="./library/Coloris-main/dist/coloris.min.css">
     <title>Document</title>
 </head>
 <body>
@@ -24,8 +26,16 @@
         <div class="containerCanvas">
             <canvas id="canvas"></canvas>
         </div>
-        <div class="animation"></div>
+        <div class="containerAnimationColor">
+            <div class="advancedColorPicker">
+                <input type="text" data-coloris id="advancedColorPicker" />
+            </div>
+            <div class="animation"></div>
+        </div>
     </div>
+    <script defer src="./library/Coloris-main/dist/coloris.min.js"></script>
+    <script>
+    </script>
     <script src="./js/main.js" type="module"></script>
 </body>
 </html>

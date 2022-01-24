@@ -13,7 +13,7 @@ class Config{
     }
 
     #setDefaultValue(){
-        this.setValue("color","red")
+        this.setValue("color","black")
         this.setValue("lineWidth","10")
     }
 }

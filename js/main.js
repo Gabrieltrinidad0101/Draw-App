@@ -3,7 +3,7 @@ import ClearBrush from "./clearBrush/clearBrush.js";
 import FillerBrush from "./fillerBrush/fillerBrush.js";
 import ColorPicker from "./colorPicker/colorPicker.js"
 import FunctionToExecute from "./functionToExecute.js";
-
+import AdvancedColorPicker from "./advancedColorPicker/advancedColorPicker.js";
 class Canvas{
     constructor(){
         //html
@@ -26,7 +26,7 @@ class Canvas{
         this.clearBrush = new ClearBrush(this.canvas,this.ctx)
         this.fillerBrush = new FillerBrush(this.canvas,this.ctx)
         this.colorPicker = new ColorPicker(this.canvas,this.ctx)
-        
+        this.advanceColorPicker = new AdvancedColorPicker()
         //set value of default in functionToExecute
         this.functionToExecute.setMouseDownFn(e=>this.paintBrush.mouseDownFn(e))
         this.functionToExecute.setMouseMoveFn(e=>this.paintBrush.mouseMoveFn(e))

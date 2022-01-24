@@ -1,0 +1,31 @@
+.advancedColorPicker{
+    padding: 5px;
+}
+.advancedColorPicker input{
+    width: 80%;
+}
+
+.advancedColorPicker .clr-field{
+    padding: 5px 10px;
+    border: 1.5px solid #fff;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 10% 100%;
+    grid-template-areas: "button input";
+}
+
+.advancedColorPicker .clr-field button{
+    grid-area: button;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.advancedColorPicker .clr-field input{
+    grid-area: input;
+    justify-self: center;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+}

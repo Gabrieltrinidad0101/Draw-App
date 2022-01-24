@@ -1,9 +1,11 @@
 import BaseTool from "../baseTool/baseTool.js";
 import Config from "../config.js"
+import AdvanceColorPicker from "../advancedColorPicker/advancedColorPicker.js";
 class ColorPicker extends BaseTool{
     constructor(canvas,ctx){
         super(canvas,ctx,"colorPicker")
         this.config = new Config()
+        this.advanceColorPicker = new AdvanceColorPicker()
         this.canDraw = false
     }
 
@@ -14,7 +16,8 @@ class ColorPicker extends BaseTool{
     mouseMoveFn(e){
         if(this.canDraw){
             const arrayColor = this.ctx.getImageData(this.mouseX(e),this.mouseY(e),1,1).data
-            this.config.setValue("color",this.arrayToRgba(arrayColor))
+            const rgba = this.arrayToRgba(arrayColor)
+            this.advanceColorPicker.setColor(rgba)
         }
     }
 
@@ -23,9 +26,7 @@ class ColorPicker extends BaseTool{
     }
     
     arrayToRgba(array){
-        let colorStr = ""
-        array.map(color=> colorStr += `${color},`)
-        return `rgba(${colorStr})`
+        return `rgba(${array[0]},${array[1]},${array[2]},${array[3]})`
     }
 }
 
