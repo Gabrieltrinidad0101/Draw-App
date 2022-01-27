@@ -10,37 +10,40 @@ class MultiBrush extends PaintBrush{
 
     endLine(){
         if(!this.posFirstX && !this.posFirstX) return
-        this.square.create(this.posFirstX,this.posFirstY)
-        if(this.posStartX >= this.posFirstX + 10 && 
-            this.posStartX <= this.posFirstX - 10 &&
-            this.posStartY >= this.posFirstY - 10 && 
-            this.posStartY <= this.posFirstY + 10 
-            ){
-                console.log("click");
-            }
+        const mousePosition = {x: this.posStartX, y: this.posStartY,width: 1,height: 1}
+        const isCollision = this.square.collisionInSquare(mousePosition)
+        if(isCollision) return true
     }
 
     mouseDownFn = e =>{
         this.canDraw = true
         this.posStartX = this.mouseX(e)
         this.posStartY = this.mouseY(e)
-        this.endLine()
+        const result = this.endLine()
+        if(result){
+            this.canDraw = false
+            this.posFirstX = null
+            this.posFirstY = null
+            return
+        }
         if(!this.posFirstX) this.posFirstX = this.posStartX
         if(!this.posFirstY) this.posFirstY = this.posStartY
+        this.square.create(this.posFirstX - 15,this.posFirstY - 15)
         this.background = this.ctx.getImageData(0,0,this.canvas.width,this.canvas.height)
     }
     
     mouseMoveFn(e){
-        if(this.posStartX && this.posStartY){
+        if(this.posStartX && this.posStartY && this.canDraw){
             this.ctx.putImageData(this.background,0,0)
             this.ctx.beginPath();
             this.ctx.moveTo(this.posStartX,this.posStartY)
             this.ctx.lineTo(this.mouseX(e),this.mouseY(e))
-            this.drawLine(e)
             this.ctx.stroke()
             this.ctx.closePath()
         }
     }
+
+    mouseUpFn = null
 
 }
 
