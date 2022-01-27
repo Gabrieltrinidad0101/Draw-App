@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/buttons.css">
-    <link rel="stylesheet" href="./css/canvas.css">
-    <link rel="stylesheet" href="./css/animation.css">
-    <link rel="stylesheet" href="./css/advancedColorPicker/advancedColorPicker.css">
-    <link rel="stylesheet" href="./css/colorPicker/circleColorPicker.css">
+    <link rel="stylesheet" href="./src/css/main.css">
+    <link rel="stylesheet" href="./src/css/header.css">
+    <link rel="stylesheet" href="./src/css/leftTools.css">
+    <link rel="stylesheet" href="./src/css/canvas.css">
+    <link rel="stylesheet" href="./src/css/animation.css">
+    <link rel="stylesheet" href="./src/css/advancedColorPicker/advancedColorPicker.css">
+    <link rel="stylesheet" href="./src/css/colorPicker/circleColorPicker.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="./library/Coloris-main/dist/coloris.min.css">
     <title>Document</title>
@@ -18,12 +18,14 @@
 <body>
     <div class="main">
         <div class="header"></div>
-        <div class="buttons">
+        <div class="leftTools">
             <button id="paintBrush"><i class="fas fa-paint-brush"></i></button>
             <button id="clearBrush"><i class="fas fa-eraser"></i></i></button>
             <button id="fillTool"><i class="fas fa-fill-drip"></i></button>
             <button id="colorPicker"><i class="fas fa-eye-dropper"></i></button>
             <button id="multiBrush"><i class="fas fa-brush"></i></button>
+            <button id="lineBrush">\</button>
+            <button id="squareBrush"><i class="far fa-square"></i></button>
         </div>
         <div class="containerCanvas">
             <canvas id="canvas"></canvas>
@@ -38,6 +40,6 @@
     <script defer src="./library/Coloris-main/dist/coloris.min.js"></script>
     <script>
     </script>
-    <script src="./js/main.js" type="module"></script>
+    <script src="./src/js/main.js" type="module"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-.buttons{
+.leftTools{
     grid-area: tools;
     display: grid;
     grid-template-rows: repeat(10,30px);
@@ -7,7 +7,7 @@
     justify-content: center;
 }
 
-.buttons > button{
+.leftTools > button{
     background: transparent;
     color: #fff;
     border: None;
@@ -15,6 +15,6 @@
     padding: 5px
 }
 
-.buttons > button:hover{
+.leftTools > button:hover{
     border: 1px solid #000;
 }

@@ -5,6 +5,8 @@ import ColorPicker from "./colorPicker/colorPicker.js"
 import FunctionToExecute from "./functionToExecute.js";
 import AdvancedColorPicker from "./advancedColorPicker/advancedColorPicker.js";
 import MultiBrush from "./multiBrush/multiBrush.js";
+import LineBrush from "./lineBrush/lineBrush.js";
+import SquareBrush from "./squareBrush/squareBrush.js"
 class Canvas{
     constructor(){
         //html
@@ -29,6 +31,8 @@ class Canvas{
         this.colorPicker = new ColorPicker(this.canvas,this.ctx)
         this.advanceColorPicker = new AdvancedColorPicker()
         this.multiBrush = new MultiBrush(this.canvas,this.ctx)
+        this.lineBrush = new LineBrush(this.canvas,this.ctx)
+        this.squareBrush = new SquareBrush(this.canvas,this.ctx)
         //set value of default in functionToExecute
         this.functionToExecute.setMouseDownFn(e=>this.paintBrush.mouseDownFn(e))
         this.functionToExecute.setMouseMoveFn(e=>this.paintBrush.mouseMoveFn(e))
