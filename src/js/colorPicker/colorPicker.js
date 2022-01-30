@@ -36,7 +36,6 @@ class ColorPicker extends BaseTool{
     }
 
     mouseUpFn(e){
-        console.log("ok");
         this.canDraw = false
         this.circleColorPicker.hiddenCirlce()
     }

@@ -16,9 +16,9 @@ class LineBrush extends PaintBrush{
         if(this.canDraw){
             this.ctx.putImageData(this.background,0,0)
             this.ctx.beginPath();
+            this.styleLine()
             this.ctx.moveTo(this.posStartX,this.posStartY)
             this.ctx.lineTo(this.mouseX(e),this.mouseY(e))
-            this.drawLine(e)
             this.ctx.stroke()
             this.ctx.closePath()
         }

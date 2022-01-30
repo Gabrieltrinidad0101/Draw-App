@@ -6,9 +6,9 @@ class Square{
         this.squareDimesions = {}
     }
 
-    create(x,y,width=30,height=30,defaultStyle){
+    create(x,y,width,height,color="#000000"){
         this.ctx.beginPath()
-        this.ctx.strokeStyle = this.config.getValue("color")
+        this.ctx.strokeStyle = color
         this.ctx.rect(x,y,width,height)
         this.squareDimesions.x = x 
         this.squareDimesions.y = y 
@@ -26,7 +26,6 @@ class Square{
                 return true
          }
          return false
-         
     }
 
 }

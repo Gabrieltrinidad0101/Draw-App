@@ -14,7 +14,7 @@ class Config{
 
     #setDefaultValue(){
         this.setValue("color",`#000000`)
-        this.setValue("lineWidth","10")
+        this.setValue("lineWidth",10)
     }
 }
 

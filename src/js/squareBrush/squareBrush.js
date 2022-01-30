@@ -25,6 +25,7 @@ class SquareBrush extends BaseTool{
         if(this.canDraw){
             this.ctx.putImageData(this.background,0,0)
             const [width,height] = this.getWidthAndHeiht(e)
+            this.styleLine()
             this.square.create(this.posStartX,this.posStartY,width,height)
         }
     }

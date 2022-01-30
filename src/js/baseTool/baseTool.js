@@ -1,5 +1,5 @@
 import FunctionToExecute from "../functionToExecute.js"
-
+import Config from "../config.js"
 class BaseTool{
     constructor(canvas,ctx,id){
         //vars
@@ -7,6 +7,7 @@ class BaseTool{
         this.ctx =  ctx
         this.button = document.getElementById(id)
         this.functionToExecute = new FunctionToExecute()
+        this.config = new Config()
         this.button.addEventListener("click",_=>this.setFunctions())
     }
 
@@ -18,7 +19,7 @@ class BaseTool{
         return e.clientY - this.canvas.offsetTop
     }
 
-    hexToRgbaArray(hexCode,opacity=1){
+    hexToRgbaArray(hexCode,opacity=255){
         let hex = hexCode.replace('#', '');
     
         if (hex.length === 3) {
@@ -30,19 +31,23 @@ class BaseTool{
         const b = parseInt(hex.substring(4, 6), 16);
 
         /* Backward compatibility for whole number based opacity values. */
-        if (opacity > 1 && opacity <= 100) {
-            opacity = opacity / 100;   
-        }
 
         return [r,g,b,opacity];
     }
 
-    drawLine = _=>{
+    styleLine = _=>{
         this.ctx.strokeStyle = this.config.getValue("color")
         this.ctx.lineWidth = this.config.getValue("lineWidth")
         this.ctx.lineCap = "round"
         this.ctx.lineJoin = "round"
         this.ctx.stroke()
+    }
+
+    resetStyleLine(){
+        this.ctx.strokeStyle = "#000"
+        this.ctx.lineWidth = 1
+        this.ctx.lineCap = null
+        this.ctx.lineJoin = null
     }
 
     

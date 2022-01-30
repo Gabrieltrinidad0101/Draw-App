@@ -4,7 +4,7 @@ class ClearBrush extends PaintBrush{
         super(canvas,ctx,"clearBrush")
     }
     
-    drawLine = _=>{
+    styleLine = _=>{
         this.ctx.strokeStyle = "white"
         this.ctx.lineWidth = this.config.getValue("lineWidth")
         this.ctx.stroke()
