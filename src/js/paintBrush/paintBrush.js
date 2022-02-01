@@ -21,8 +21,6 @@ class PaintBrush extends BaseTool{
 
     mouseUpFn(){
         this.canDraw = false
-        this.ctx.stroke()
-        this.ctx.closePath();
     }
 }
 

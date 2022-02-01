@@ -33,6 +33,7 @@ class Canvas{
         this.multiBrush = new MultiBrush(this.canvas,this.ctx)
         this.lineBrush = new LineBrush(this.canvas,this.ctx)
         this.squareBrush = new SquareBrush(this.canvas,this.ctx)
+        
         //set value of default in functionToExecute
         this.functionToExecute.setMouseDownFn(e=>this.paintBrush.mouseDownFn(e),true)
         this.functionToExecute.setMouseMoveFn(e=>this.paintBrush.mouseMoveFn(e),true)

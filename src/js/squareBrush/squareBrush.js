@@ -1,10 +1,12 @@
 import BaseTool from "../baseTool/baseTool.js";
 import Square from "./square.js";
+import Transform from "../transform/transform.js";
 class SquareBrush extends BaseTool{
     constructor(canvas,ctx){
         super(canvas,ctx,"squareBrush")
         this.canDraw = false
         this.square = new Square(this.ctx)
+        this.transform =  new Transform(this.canvas,this.ctx)
     }
 
 
@@ -32,6 +34,8 @@ class SquareBrush extends BaseTool{
 
     mouseUpFn(e){
         this.canDraw = false
+        const [width,height] = this.getWidthAndHeiht(e)
+        this.transform.setTransform(this.posStartX,this.posStartY,width,height)
     }
 
 

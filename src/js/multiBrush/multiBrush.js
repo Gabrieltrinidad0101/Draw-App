@@ -11,7 +11,7 @@ class MultiBrush extends PaintBrush{
     endLine(){
         if(!this.posFirstX && !this.posFirstX) return
         const mousePosition = {x: this.posStartX, y: this.posStartY,width: 1,height: 1}
-        const isCollision = this.square.collisionInSquare(mousePosition)
+        const isCollision = this.square.collision(this.square.squareDimesions,mousePosition)
         if(isCollision) return true
     }
 
@@ -24,6 +24,8 @@ class MultiBrush extends PaintBrush{
             this.canDraw = false
             this.posFirstX = null
             this.posFirstY = null
+            this.ctx.stroke()
+            this.ctx.closePath()
             return
         }
         if(!this.posFirstX) this.posFirstX = this.posStartX
@@ -35,22 +37,19 @@ class MultiBrush extends PaintBrush{
         if(this.posStartX && this.posStartY && this.canDraw){
             this.ctx.putImageData(this.background,0,0)
             this.ctx.beginPath();
-            this.styleLine()
             this.ctx.moveTo(this.posStartX,this.posStartY)
             this.ctx.lineTo(this.mouseX(e),this.mouseY(e))
-            this.ctx.stroke()
-            this.ctx.closePath()
+            this.styleLine()
             this.makeSquare()
         }
     }
 
     makeSquare(){
-        this.resetStyleLine()
         const width = this.config.getValue("lineWidth") + 10
         const height = this.config.getValue("lineWidth") + 10
         const x = this.posFirstX - width / 2
         const y = this.posFirstY - height / 2
-        this.square.create(x,y,width,height)
+        this.square.create(x,y,width,height,true)
     }
 
     mouseUpFn = null

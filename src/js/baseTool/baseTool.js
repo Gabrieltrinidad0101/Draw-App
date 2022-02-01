@@ -36,11 +36,13 @@ class BaseTool{
     }
 
     styleLine = _=>{
+        this.ctx.save()
         this.ctx.strokeStyle = this.config.getValue("color")
         this.ctx.lineWidth = this.config.getValue("lineWidth")
         this.ctx.lineCap = "round"
         this.ctx.lineJoin = "round"
         this.ctx.stroke()
+        this.ctx.restore()
     }
 
     resetStyleLine(){
