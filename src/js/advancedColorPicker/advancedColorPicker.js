@@ -8,6 +8,8 @@ class AdvanceColorPicker{
         //events
         this.colorPicker.addEventListener("input",_=>this.setColor(this.colorPicker.value))
         this.configPicker()
+        this.containerColorPicker.style.color = this.config.getValue("color")
+        this.colorPicker.value = this.config.getValue("color")
     }
 
     setColor(color){

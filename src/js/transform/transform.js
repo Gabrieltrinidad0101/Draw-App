@@ -2,9 +2,7 @@ import Square from "../squareBrush/square.js";
 import Config from "../config.js";
 class Transform{
     constructor(canvas,ctx){
-        this.canvas = canvas
-        this.ctx = ctx
-        this.square= new Square(this.ctx)
+        this.body = document.body
         this.config = new Config()
     }
 
@@ -12,27 +10,27 @@ class Transform{
         return [x - width / 2, y  - height /2 ]
     }
 
-    mouseX(e){
-        return e.clientX - this.canvas.offsetLeft
-    }
-
-    mouseY(e){
-        return e.clientY - this.canvas.offsetTop
-    }
-
     setTransform(x,y,width,height){
         const lineWidth = this.config.getValue("lineWidth") + 7
         const centerLineWidth = this.config.getValue("lineWidth") / 2
-        const square1 = this.square.create(x,y,width - centerLineWidth ,height,true)
-        const mimiSquare1 = this.#mimiSquare(x,y,lineWidth,lineWidth)
-        const mimiSquare2 = this.#mimiSquare(x+width,y,lineWidth,lineWidth)
-        const mimiSquare3 = this.#mimiSquare(x,y + height,lineWidth,lineWidth)
-        const mimiSquare4 = this.#mimiSquare(x + width,y + height,lineWidth,lineWidth)
+        const square1 = this.#createSquare(x,y,width - centerLineWidth ,height,false)
+        const mimiSquare1 = this.#createSquare(x,y,lineWidth,lineWidth)
+        const mimiSquare2 = this.#createSquare(x+width,y,lineWidth,lineWidth)
+        const mimiSquare3 = this.#createSquare(x,y + height,lineWidth,lineWidth)
+        const mimiSquare4 = this.#createSquare(x + width,y + height,lineWidth,lineWidth)        
     }
 
-    #mimiSquare(x,y,width,height){
-        const [centerX,centerY] = this.center(x,y,width,height)
-        return this.square.create(centerX,centerY,width,height,true)
+    #createSquare(x,y,width,height,center=true){
+        const [centerX,centerY] = center ? this.center(x,y,width,height) : [x,y]
+        const div = document.createElement('div');
+        div.style.position = "fixed"
+        div.style.left = centerX + "px";
+        div.style.top = centerY + "px";
+        div.style.width = width + "px"
+        div.style.height = height + "px"
+        div.style.border = "1px solid #000"
+        this.body.appendChild(div)
+        return div
     }
 
 }
