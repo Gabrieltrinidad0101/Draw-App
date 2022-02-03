@@ -12,7 +12,6 @@ class BaseTool{
     }
 
     mouseX(e){
-        console.log(this.canvas.offsetLeft);
         return e.clientX - this.canvas.offsetLeft
     }
 
