@@ -12,6 +12,8 @@ class SquareBrush extends BaseTool{
 
     mouseDownFn(e){
         this.canDraw = true
+        this.mousePositionX = e.clientX
+        this.mousePositionY = e.clientY
         this.posStartX = this.mouseX(e)
         this.posStartY = this.mouseY(e)
         this.background = this.ctx.getImageData(0,0,this.canvas.width,this.canvas.height)
@@ -37,7 +39,7 @@ class SquareBrush extends BaseTool{
         const [width,height] = this.getWidthAndHeiht(e)
         const x = this.posStartX
         const y = this.posStartY
-        this.transform.setTransform(x,y,width,height)
+        this.transform.setTransform(x,y,this.mousePositionX,this.mousePositionY,width,height)
     }
 
 

@@ -1,0 +1,22 @@
+
+    center(x,y,width,height){
+        return [x - width / 2, y  - height /2 ]
+    }
+
+    convertSizeNegativeToPositive(x,y,width,height){
+        const newPositionX = width < 0 ? x + width : x
+        const newPositionY = height < 0 ? y + height : y
+        const newWidth = Math.abs(width)
+        const newHeight = Math.abs(height)
+        return [newPositionX,newPositionY,newWidth,newHeight]
+    }
+
+
+
+        //this.square2 = this.#createSquare(mouseX,mouseY,lineWidth,lineWidth)
+        //this.square3 = this.#createSquare(mouseX+width,mouseY,lineWidth,lineWidth)
+        //this.square4 = this.#createSquare(mouseX,mouseY + height,lineWidth,lineWidth)
+        //this.square5 = this.#createSquare(mouseX + width,mouseY + height,lineWidth,lineWidth)  
+ 
+
+         const [centerX,centerY] = center ? this.center(x,y,width,height) : [x,y]
