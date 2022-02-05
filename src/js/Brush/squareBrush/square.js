@@ -1,4 +1,4 @@
-import Config from "../config.js";
+import Config from "../../config.js";
 class Square{
     constructor(ctx){
         this.ctx = ctx

@@ -1,7 +1,7 @@
 import PaintBrush from "../paintBrush/paintBrush.js"
 class LineBrush extends PaintBrush{
-    constructor(canvas,ctx){
-        super(canvas,ctx,"lineBrush")
+    constructor(){
+        super("lineBrush")
         this.canDraw = false
     }
     

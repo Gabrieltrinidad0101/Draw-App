@@ -2,3 +2,7 @@
     grid-area: canvas;
     background:#fff;
 }
+
+canvas{
+    position: fixed;
+}

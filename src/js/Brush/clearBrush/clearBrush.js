@@ -1,7 +1,7 @@
 import PaintBrush from "../paintBrush/paintBrush.js"
 class ClearBrush extends PaintBrush{
-    constructor(canvas,ctx){
-        super(canvas,ctx,"clearBrush")
+    constructor(){
+        super("clearBrush")
     }
     
     styleLine = _=>{

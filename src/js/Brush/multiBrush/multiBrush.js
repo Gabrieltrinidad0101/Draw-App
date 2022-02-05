@@ -1,8 +1,8 @@
 import PaintBrush from "../paintBrush/paintBrush.js"
 import Square from "../squareBrush/square.js"
 class MultiBrush extends PaintBrush{
-    constructor(canvas,ctx){
-        super(canvas,ctx,"multiBrush")
+    constructor(){
+        super("multiBrush")
         this.posFirstX = null
         this.posFirstY = null
         this.square = new Square(this.ctx)
@@ -45,8 +45,9 @@ class MultiBrush extends PaintBrush{
     }
 
     makeSquare(){
-        const width = this.config.getValue("lineWidth") + 10
-        const height = this.config.getValue("lineWidth") + 10
+        const paddingOfSquare = 10
+        const width = this.config.getValue("lineWidth") + paddingOfSquare
+        const height = this.config.getValue("lineWidth") + paddingOfSquare
         const x = this.posFirstX - width / 2
         const y = this.posFirstY - height / 2
         this.square.create(x,y,width,height,true)

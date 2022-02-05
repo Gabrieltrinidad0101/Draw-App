@@ -1,8 +1,8 @@
-import BaseTool from "../baseTool/baseTool.js";
+import BaseTool from "../../baseTool/baseTool.js"
 import FloodFile from "./floodFile.js"
 class FillerBrush extends BaseTool{
-    constructor(canvas,ctx){
-        super(canvas,ctx,"fillTool")
+    constructor(){
+        super("fillTool")
         this.floodFile = new FloodFile(this.ctx)
     }
 

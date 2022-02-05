@@ -3,8 +3,8 @@ import Config from "../config.js"
 import AdvanceColorPicker from "../advancedColorPicker/advancedColorPicker.js";
 import CircleColorPicker from "./circleColorPicker.js"
 class ColorPicker extends BaseTool{
-    constructor(canvas,ctx){
-        super(canvas,ctx,"colorPicker")
+    constructor(){
+        super("colorPicker")
         this.config = new Config()
         this.advanceColorPicker = new AdvanceColorPicker()
         this.circleColorPicker = new CircleColorPicker()

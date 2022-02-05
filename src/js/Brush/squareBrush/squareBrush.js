@@ -1,9 +1,9 @@
-import BaseTool from "../baseTool/baseTool.js";
 import Square from "./square.js";
-import Transform from "../transform/transform.js";
+import BaseTool from "../../baseTool/baseTool.js";
+import Transform from "../../transform/transform.js"
 class SquareBrush extends BaseTool{
-    constructor(canvas,ctx){
-        super(canvas,ctx,"squareBrush")
+    constructor(){
+        super("squareBrush")
         this.canDraw = false
         this.square = new Square(this.ctx)
         this.transform =  new Transform(this.canvas,this.ctx)

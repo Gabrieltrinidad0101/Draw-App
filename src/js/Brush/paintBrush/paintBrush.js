@@ -1,8 +1,8 @@
-import BaseTool from "../baseTool/baseTool.js"
+import BaseTool from "../../baseTool/baseTool.js"
 
 class PaintBrush extends BaseTool{
-    constructor(canvas,ctx,id="paintBrush"){
-        super(canvas,ctx,id)
+    constructor(id="paintBrush"){
+        super(id)
     }
 
     mouseDownFn = e =>{

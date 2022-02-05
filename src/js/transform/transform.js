@@ -1,4 +1,3 @@
-import Square from "../squareBrush/square.js";
 import Config from "../config.js";
 import FunctionToExecute from "../functionToExecute.js";
 class Transform{

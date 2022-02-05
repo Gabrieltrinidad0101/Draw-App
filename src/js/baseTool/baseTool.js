@@ -1,13 +1,13 @@
 import FunctionToExecute from "../functionToExecute.js"
 import Config from "../config.js"
 class BaseTool{
-    constructor(canvas,ctx,id){
+    constructor(id){
         //vars
-        this.canvas = canvas
-        this.ctx =  ctx
         this.button = document.getElementById(id)
         this.functionToExecute = new FunctionToExecute()
         this.config = new Config()
+        this.ctx = this.config.getValue("ctx")
+        this.canvas = this.config.getValue("canvas")
         this.button.addEventListener("click",_=>this.setFunctions())
     }
 
