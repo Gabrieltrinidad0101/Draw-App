@@ -30,8 +30,6 @@ class BaseTool{
         const g = parseInt(hex.substring(2, 4), 16);
         const b = parseInt(hex.substring(4, 6), 16);
 
-        /* Backward compatibility for whole number based opacity values. */
-
         return [r,g,b,opacity];
     }
 
@@ -52,7 +50,6 @@ class BaseTool{
         this.ctx.lineJoin = null
     }
 
-    
     setFunctions(){
         this.functionToExecute.setMouseDownFn(e=>this.mouseDownFn ? this.mouseDownFn(e) : "")
         this.functionToExecute.setMouseMoveFn(e=>this.mouseMoveFn ? this.mouseMoveFn(e) : "")
