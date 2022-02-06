@@ -11,12 +11,6 @@ class Transform{
         this.functionToExecute = new FunctionToExecute()
     }
 
-    removeFunction(){
-        this.functionToExecute.setMouseDownFn(_=>{})
-        this.functionToExecute.setMouseMoveFn(_=>{})
-        this.functionToExecute.setMouseUpFn(_=>{})
-    }
-
     convertSizeNegativeToPositive(x,y,width,height){
         const newPositionX = width < 0 ? x + width : x
         const newPositionY = height < 0 ? y + height : y

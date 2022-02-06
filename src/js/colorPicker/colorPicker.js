@@ -1,11 +1,10 @@
 import BaseTool from "../baseTool/baseTool.js";
-import Config from "../config.js"
 import AdvanceColorPicker from "../advancedColorPicker/advancedColorPicker.js";
 import CircleColorPicker from "./circleColorPicker.js"
+
 class ColorPicker extends BaseTool{
     constructor(){
         super("colorPicker")
-        this.config = new Config()
         this.advanceColorPicker = new AdvanceColorPicker()
         this.circleColorPicker = new CircleColorPicker()
 
@@ -25,6 +24,8 @@ class ColorPicker extends BaseTool{
 
 
     mouseDownFn(e){
+        this.canvas = this.config.getValue("mainCanvas")
+        this.ctx = this.config.getValue("mainCtx")
         this.canDraw = true
         this.colorSelectionOnCanvasAndSaveInConfig(e)
     }

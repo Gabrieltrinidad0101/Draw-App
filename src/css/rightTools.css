@@ -1,0 +1,10 @@
+.rightTools{
+    grid-area: animation;
+}
+
+
+.containerRangeWidthLine{
+    width:100%;
+    display:flex;
+    justify-content: center;
+}

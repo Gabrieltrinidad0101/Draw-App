@@ -7,8 +7,8 @@ import SquareBrush from "./Brush/squareBrush/squareBrush.js";
 import ColorPicker from "./colorPicker/colorPicker.js"
 import FunctionToExecute from "./functionToExecute.js";
 import AdvancedColorPicker from "./advancedColorPicker/advancedColorPicker.js";
-import Config from "./config.js";
 import CanvasLayers from "./CanvasLayers/canvasLayers.js";
+import LineWidth from "./changeLineWidth/changeLineWidth.js";
 class Canvas{
     constructor(){
         this.containerCanvas = document.querySelector(".containerCanvas");
@@ -32,6 +32,7 @@ class Canvas{
         this.squareBrush = new SquareBrush()
         this.colorPicker = new ColorPicker()
         this.advanceColorPicker = new AdvancedColorPicker()
+        this.lineWidth = new LineWidth()
         
         //set value of default in functionToExecute
         this.functionToExecute.setMouseDownFn(e=>this.paintBrush.mouseDownFn(e),true)
