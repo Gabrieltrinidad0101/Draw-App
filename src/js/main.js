@@ -11,21 +11,17 @@ import Config from "./config.js";
 import CanvasLayers from "./CanvasLayers/canvasLayers.js";
 class Canvas{
     constructor(){
-        this.canvasLayers = new CanvasLayers()
-        const newLayer = this.canvasLayers.createNewLayer("canvas")
+        this.containerCanvas = document.querySelector(".containerCanvas");
+        const canvas = document.getElementById("canvas")
+        const ctx =  canvas.getContext("2d")
+
+        canvas.width = this.containerCanvas.clientWidth
+        canvas.height = this.containerCanvas.clientHeight
+
+        this.canvasLayers = new CanvasLayers(canvas,ctx)
+        let newLayer = this.canvasLayers.createNewLayer("canvas")
         this.canvas = newLayer.canvas
         this.ctx = newLayer.ctx
-
-        //set background
-        this.ctx.beginPath()
-        this.ctx.fillStyle = "blue";
-        this.ctx.fillRect(0, 0, canvas.width, canvas.height);
-        this.ctx.closePath()
-
-        //set context and canvas in config
-        this.config = new Config()
-        this.config.setValue("canvas",this.canvas)
-        this.config.setValue("ctx",this.ctx)
         
         //class
         this.functionToExecute = new FunctionToExecute()
@@ -45,15 +41,16 @@ class Canvas{
         
 
         //events
-        this.canvas.addEventListener("mousedown",e=>{
+        canvas.addEventListener("mousedown",e=>{
             this.functionToExecute.runMouseDownFn(e)
         })
         
-        this.canvas.addEventListener("mousemove",e=>{
+        canvas.addEventListener("mousemove",e=>{
             this.functionToExecute.runMouseMoveFn(e)
         })
         
-        this.canvas.addEventListener("mouseup",e=>{
+        canvas.addEventListener("mouseup",e=>{
+            this.canvasLayers.createNewLayer("canvas1")
             this.functionToExecute.runMouseUpFn(e)
         })
     }

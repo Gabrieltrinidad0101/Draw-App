@@ -8,15 +8,16 @@ class BaseTool{
         this.config = new Config()
         this.ctx = this.config.getValue("ctx")
         this.canvas = this.config.getValue("canvas")
+        this.mainCanvas = this.config.getValue("mainCanvas")
         this.button.addEventListener("click",_=>this.setFunctions())
     }
 
     mouseX(e){
-        return e.clientX - this.canvas.offsetLeft
+        return e.clientX - this.mainCanvas.offsetLeft
     }
 
     mouseY(e){
-        return e.clientY - this.canvas.offsetTop
+        return e.clientY - this.mainCanvas.offsetTop
     }
 
     hexToRgbaArray(hexCode,opacity=255){

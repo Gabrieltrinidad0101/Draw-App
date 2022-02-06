@@ -7,17 +7,18 @@ class Node{
 
 class LinkList{
     constructor(){
-        this.heap = null
+        this.heap = this.tail = null
     }
 
     add(value){
-        if(!this.heap){
-            this.heap = new Node(value)
+        if(!this.tail){
+            this.heap,this.tail = new Node(value)
             return 
         }
-        const oldHead = this.heap
-        this.heap = new Node(value)
-        this.heap.next = oldHead
+        const oldTail = this.tail
+        this.tail = new Node(value)
+        oldTail.next = this.tail
+        this.tail.prev = oldTail
     }
 }
 

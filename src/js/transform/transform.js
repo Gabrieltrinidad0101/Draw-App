@@ -4,6 +4,7 @@ class Transform{
     constructor(canvas,ctx){
         this.body = document.body
         this.config = new Config()
+        this.mainCanvas = this.config.getValue("mainCanvas")
         this.ctx = ctx
         this.canvas = canvas
         this.canTransform = false
@@ -64,8 +65,8 @@ class Transform{
         const newPostion = this.ctx.getImageData(this.x,this.y,this.width,this.height)
         this.ctx.clearRect(this.x,this.y,this.width,this.height)
         const [x,y] = this.updatePositionSquare(e.movementX,e.movementY)
-        this.x = x - this.canvas.offsetLeft - 17 / 2
-        this.y = y - this.canvas.offsetTop - 17 / 2
+        this.x = x - this.mainCanvas.offsetLeft - 17 / 2
+        this.y = y - this.mainCanvas.offsetTop - 17 / 2
         this.ctx.putImageData(newPostion,this.x,this.y)
 
     }
