@@ -6,10 +6,14 @@ class BaseTool{
         this.button = document.getElementById(id)
         this.functionToExecute = new FunctionToExecute()
         this.config = new Config()
-        this.ctx = this.config.getValue("ctx")
-        this.canvas = this.config.getValue("canvas")
         this.mainCanvas = this.config.getValue("mainCanvas")
         this.button.addEventListener("click",_=>this.setFunctions())
+        this.getCanvasAndContext()
+    }
+
+    getCanvasAndContext(){
+        this.ctx = this.config.getValue("ctx")
+        this.canvas = this.config.getValue("canvas")
     }
 
     mouseX(e){
@@ -52,6 +56,7 @@ class BaseTool{
     }
 
     setFunctions(){
+        this.getCanvasAndContext()
         this.functionToExecute.setMouseDownFn(e=>this.mouseDownFn ? this.mouseDownFn(e) : "")
         this.functionToExecute.setMouseMoveFn(e=>this.mouseMoveFn ? this.mouseMoveFn(e) : "")
         this.functionToExecute.setMouseUpFn(e=>this.mouseUpFn ? this.mouseUpFn(e) : "")

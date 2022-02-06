@@ -26,7 +26,6 @@ class Transform{
     }
 
     setTransform(x,y,mouseX,mouseY,width,height){
-        this.removeFunction()
         const lineWidth = this.config.getValue("lineWidth") + 7
         const centerLineWidth = this.config.getValue("lineWidth") / 2
         this.x = x - lineWidth / 2

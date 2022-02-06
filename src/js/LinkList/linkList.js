@@ -12,13 +12,14 @@ class LinkList{
 
     add(value){
         if(!this.tail){
-            this.heap,this.tail = new Node(value)
+            const node = new Node(value)
+            this.heap  = node
+            this.tail = node
             return 
         }
         const oldTail = this.tail
         this.tail = new Node(value)
         oldTail.next = this.tail
-        this.tail.prev = oldTail
     }
 
     

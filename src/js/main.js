@@ -12,16 +12,15 @@ import CanvasLayers from "./CanvasLayers/canvasLayers.js";
 class Canvas{
     constructor(){
         this.containerCanvas = document.querySelector(".containerCanvas");
-        const canvas = document.getElementById("canvas")
-        const ctx =  canvas.getContext("2d")
+        this.canvas = document.getElementById("canvas")
+        this.ctx =  canvas.getContext("2d")
 
-        canvas.width = this.containerCanvas.clientWidth
-        canvas.height = this.containerCanvas.clientHeight
+        this.canvas.width = this.containerCanvas.clientWidth
+        this.canvas.height = this.containerCanvas.clientHeight
 
-        this.canvasLayers = new CanvasLayers(canvas,ctx)
-        let newLayer = this.canvasLayers.createNewLayer("canvas")
-        this.canvas = newLayer.canvas
-        this.ctx = newLayer.ctx
+        this.canvasLayers = new CanvasLayers(this.canvas,this.ctx)
+        this.canvasLayers.createNewLayer("canvas")
+        this.canvasLayers.createNewSubLayer()
         
         //class
         this.functionToExecute = new FunctionToExecute()
@@ -41,16 +40,16 @@ class Canvas{
         
 
         //events
-        canvas.addEventListener("mousedown",e=>{
+        this.canvas.addEventListener("mousedown",e=>{
             this.functionToExecute.runMouseDownFn(e)
         })
         
-        canvas.addEventListener("mousemove",e=>{
+        this.canvas.addEventListener("mousemove",e=>{
             this.functionToExecute.runMouseMoveFn(e)
         })
         
-        canvas.addEventListener("mouseup",e=>{
-            this.canvasLayers.createNewLayer("canvas1")
+        this.canvas.addEventListener("mouseup",e=>{
+            this.canvasLayers.createNewSubLayer()
             this.functionToExecute.runMouseUpFn(e)
         })
     }

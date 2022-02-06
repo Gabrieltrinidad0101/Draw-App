@@ -5,12 +5,17 @@ class SquareBrush extends BaseTool{
     constructor(){
         super("squareBrush")
         this.canDraw = false
+    }
+
+    start(){
         this.square = new Square(this.ctx)
-        this.transform =  new Transform(this.canvas,this.ctx)
+        this.transform =  new Transform(this.canvas,this.ctx) 
     }
 
 
     mouseDownFn(e){
+        this.getCanvasAndContext()
+        this.start()
         this.canDraw = true
         this.mousePositionX = e.clientX
         this.mousePositionY = e.clientY

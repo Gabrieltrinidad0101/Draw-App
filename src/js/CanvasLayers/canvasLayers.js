@@ -22,27 +22,28 @@ class CanvasLayers{
     }
 
     createNewLayer(name){
-        const layer = this.#Layer()
-        this.layers.add(name,this.newLayer)
-        return  layer
+        this.layers.add(name)
     }
 
     createNewSubLayer(){
-        
+        const subLayers = this.layers.get(0)
+        const layer = this.#Layer()
+        subLayers.layers.add(layer)
     }
 
     #render(){
-        setInterval(_=>{
+        const loop = setInterval(_=>{
             this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height)
             for(let i = 0; i < this.layers.table.size; i++){
-                if(this.layers.get(1)){
-                    let subLayer = this.layers.get(i)
-                    while(subLayer){
-                        subLayer = subLayer.next
-                    }
+                let subLayer = this.layers.get(i)
+                let currentLayer =  subLayer.layers.heap
+                while(currentLayer){
+                    const canvas = currentLayer.value.canvas
+                    this.ctx.drawImage(canvas,0,0)
+                    currentLayer = currentLayer.next
                 }
             }
-        },1000)
+        },100)
     }
 
     addSubLayer(id,name){
