@@ -20,6 +20,8 @@ class LinkList{
         oldTail.next = this.tail
         this.tail.prev = oldTail
     }
+
+    
 }
 
 

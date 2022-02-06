@@ -7,7 +7,7 @@ class HashTable{
     }
 
     add(name){
-        this.linkList = new LinkList() 
+        this.linkList = new LinkList()
         table.set(table.size,{name,layers: this.linkList})
     }
 

@@ -27,6 +27,10 @@ class CanvasLayers{
         return  layer
     }
 
+    createNewSubLayer(){
+        
+    }
+
     #render(){
         setInterval(_=>{
             this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height)

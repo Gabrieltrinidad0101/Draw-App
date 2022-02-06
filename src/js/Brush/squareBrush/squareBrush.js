@@ -19,7 +19,6 @@ class SquareBrush extends BaseTool{
         this.background = this.ctx.getImageData(0,0,this.canvas.width,this.canvas.height)
     }
 
-
     getWidthAndHeiht(e){
         return [this.mouseX(e) - this.posStartX,this.mouseY(e) - this.posStartY]
     }
