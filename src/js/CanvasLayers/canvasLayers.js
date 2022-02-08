@@ -44,7 +44,7 @@ class CanvasLayers{
                     currentLayer = currentLayer.next
                 }
             }
-        },100)
+        },50)
     }
 
     addSubLayer(id,name){

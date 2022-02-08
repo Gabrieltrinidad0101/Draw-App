@@ -20,17 +20,22 @@ class Transform{
     }
 
     setTransform(x,y,mouseX,mouseY,width,height){
-        const lineWidth = this.config.getValue("lineWidth") + 7
-        const centerLineWidth = this.config.getValue("lineWidth") / 2
-        this.x = x - lineWidth / 2
-        this.y = y - lineWidth / 2
-        this.width = width + lineWidth
-        this.height = height + lineWidth
-        const [newPositionX,newPositionY,newWidth,newHeight] = this.convertSizeNegativeToPositive(mouseX,mouseY,width - centerLineWidth ,height)
+        this.lineWidth = this.config.getValue("lineWidth") + 7
+        this.x = x - this.lineWidth / 2
+        this.y = y - this.lineWidth / 2
+        this.width = width + this.lineWidth
+        this.height = height + this.lineWidth
+        const [newPositionX,newPositionY,newWidth,newHeight] = this.convertSizeNegativeToPositive(mouseX,mouseY,width ,height)
         this.square1 = this.#createSquare(newPositionX,newPositionY,newWidth,newHeight,false)
-        this.square1.addEventListener("mousemove",e=>this.moveShape(e))      
+        this.square1.addEventListener("mousemove",e=>this.moveShape(e))
+        this.mainCanvas.addEventListener("mousedown",this.removeSquares)
     }
-
+    
+    removeSquares = _=> {
+        this.square1.remove()
+        this.mainCanvas.removeEventListener("mousedown",this.removeSquares)
+    }
+    
     #createSquare(x,y,width,height,center=true){
         const [centerX,centerY] = [x,y]
         const div = document.createElement('div');
@@ -40,26 +45,25 @@ class Transform{
         div.style.width = `${width}px`
         div.style.height = `${height}px`
         div.addEventListener("mousedown",_=>this.canTransform = true)
-        div.addEventListener("mouseup",_=>{this.canTransform = false})
+        div.addEventListener("mouseup",_=>this.canTransform = false)
         this.body.appendChild(div)
         return div
     }
 
     updatePositionSquare(x,y){
         const methodString = `square${1}` 
-        const position = this[methodString].getBoundingClientRect()
+        const position = this[methodString].getBoundingClientRect() 
         this[methodString].style.left = `${position.x + x}px`
         this[methodString].style.top = `${position.y + y}px`
-        return [position.x + x,position.y + y]
     }
 
     moveShape(e){
         if(!this.canTransform) return
         const newPostion = this.ctx.getImageData(this.x,this.y,this.width,this.height)
         this.ctx.clearRect(this.x,this.y,this.width,this.height)
-        const [x,y] = this.updatePositionSquare(e.movementX,e.movementY)
-        this.x = x - this.mainCanvas.offsetLeft - 17 / 2
-        this.y = y - this.mainCanvas.offsetTop - 17 / 2
+        this.updatePositionSquare(e.movementX,e.movementY)
+        this.x += e.movementX
+        this.y += e.movementY
         this.ctx.putImageData(newPostion,this.x,this.y)
 
     }
