@@ -1,14 +1,15 @@
 import Config from "../config.js";
 import FunctionToExecute from "../functionToExecute.js";
+import SquareInterfaces from "../squareInterfaces/squareInterfaces.js";
 class Transform{
     constructor(canvas,ctx){
-        this.body = document.body
         this.config = new Config()
         this.mainCanvas = this.config.getValue("mainCanvas")
         this.ctx = ctx
         this.canvas = canvas
         this.canTransform = false
         this.functionToExecute = new FunctionToExecute()
+        this.squareInterfaces = new SquareInterfaces()
     }
 
     convertSizeNegativeToPositive(x,y,width,height){
@@ -37,17 +38,10 @@ class Transform{
     }
     
     #createSquare(x,y,width,height,center=true){
-        const [centerX,centerY] = [x,y]
-        const div = document.createElement('div');
-        div.className = "squareInterfaces"
-        div.style.left = `${centerX}px`;
-        div.style.top = `${centerY}px`;
-        div.style.width = `${width}px`
-        div.style.height = `${height}px`
-        div.addEventListener("mousedown",_=>this.canTransform = true)
-        div.addEventListener("mouseup",_=>this.canTransform = false)
-        this.body.appendChild(div)
-        return div
+        const square = this.squareInterfaces.create(x,y,width,height)
+        square.addEventListener("mousedown",_=>this.canTransform = true)
+        square.addEventListener("mouseup",_=>this.canTransform = false)
+        return square
     }
 
     updatePositionSquare(x,y){
