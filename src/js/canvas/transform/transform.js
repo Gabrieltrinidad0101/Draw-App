@@ -1,4 +1,4 @@
-import Config from "../config.js";
+import Config from "../../config.js";
 import FunctionToExecute from "../functionToExecute.js";
 import SquareInterfaces from "../squareInterfaces/squareInterfaces.js";
 class Transform{
@@ -20,7 +20,15 @@ class Transform{
         return [newPositionX,newPositionY,newWidth,newHeight]
     }
 
+    setPositionShapeInConfig(x,y,width,height){
+        const positionShape = {x,y,width,height,id: this.config.getValue("currentSubLayerId")}
+        const positionShapes = this.config.getValue("positionShapes") ?? []
+        positionShapes.push(positionShape)
+        this.config.setValue("positionShapes",positionShapes)
+    }
+
     setTransform(x,y,mouseX,mouseY,width,height){
+        this.setPositionShapeInConfig(mouseX,mouseY,width,height)
         this.lineWidth = this.config.getValue("lineWidth") + 7
         this.x = x - this.lineWidth / 2
         this.y = y - this.lineWidth / 2

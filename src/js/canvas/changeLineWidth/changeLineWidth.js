@@ -1,4 +1,4 @@
-import Config from "../config.js"
+import Config from "../../config.js"
 class LineWidth{
     constructor(){
         this.range = document.getElementById("rangeWidthLine")

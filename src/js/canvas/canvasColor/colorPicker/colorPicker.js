@@ -1,4 +1,4 @@
-import BaseTool from "../baseTool/baseTool.js";
+import BaseTool from "../../baseTool/baseTool.js";
 import AdvanceColorPicker from "../advancedColorPicker/advancedColorPicker.js";
 import CircleColorPicker from "./circleColorPicker.js"
 

@@ -1,4 +1,4 @@
-import LinkList from "../LinkList/linkList.js"
+import LinkList from "../linkList/linkList.js"
 const table = new Map()
 
 class HashTable{

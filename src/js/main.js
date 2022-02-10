@@ -1,14 +1,15 @@
-import PaintBrush from "./Brush/paintBrush/paintBrush.js";
-import ClearBrush from "./Brush/clearBrush/clearBrush.js";
-import FillerBrush from "./Brush/fillerBrush/fillerBrush.js";
-import MultiBrush from "./Brush/multiBrush/multiBrush.js";
-import LineBrush from "./Brush/lineBrush/lineBrush.js";
-import SquareBrush from "./Brush/squareBrush/squareBrush.js";
-import ColorPicker from "./colorPicker/colorPicker.js"
-import FunctionToExecute from "./functionToExecute.js";
-import AdvancedColorPicker from "./advancedColorPicker/advancedColorPicker.js";
-import CanvasLayers from "./CanvasLayers/canvasLayers.js";
-import LineWidth from "./changeLineWidth/changeLineWidth.js";
+import PaintBrush from "./canvas/brush/paintBrush/paintBrush.js";
+import ClearBrush from "./canvas/brush/clearBrush/clearBrush.js";
+import FillerBrush from "./canvas/brush/fillerBrush/fillerBrush.js";
+import MultiBrush from "./canvas/brush/multiBrush/multiBrush.js";
+import LineBrush from "./canvas/brush/lineBrush/lineBrush.js";
+import SquareBrush from "./canvas/brush/squareBrush/squareBrush.js";
+import ColorPicker from "./canvas/canvasColor/colorPicker/colorPicker.js"
+import FunctionToExecute from "./canvas/functionToExecute.js";
+import AdvancedColorPicker from "./canvas/canvasColor/advancedColorPicker/advancedColorPicker.js";
+import CanvasLayers from "./canvas/canvasLayers/canvasLayers.js";
+import LineWidth from "./canvas/changeLineWidth/changeLineWidth.js";
+import "./canvas/mouseSelector/mouseSelector.js"
 class Canvas{
     constructor(){
         this.containerCanvas = document.querySelector(".containerCanvas");
@@ -38,7 +39,6 @@ class Canvas{
         this.functionToExecute.setMouseDownFn(e=>this.paintBrush.mouseDownFn(e),true)
         this.functionToExecute.setMouseMoveFn(e=>this.paintBrush.mouseMoveFn(e),true)
         this.functionToExecute.setMouseUpFn(e=>this.paintBrush.mouseUpFn(e),true)
-        
 
         //events
         this.canvas.addEventListener("mousedown",e=>{
