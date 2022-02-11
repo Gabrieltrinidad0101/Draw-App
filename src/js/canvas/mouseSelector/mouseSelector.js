@@ -2,6 +2,7 @@ import BaseTool from "../baseTool/baseTool.js"
 import HashTable from "../hashTable/hashTable.js"
 import { CollectionSquareToSquare } from "../collisions/squareToSquare.js"
 import Transform from "../transform/transform.js"
+
 class MouseSelector extends BaseTool{
     constructor(){
         super("mouseSelector")
@@ -19,8 +20,9 @@ class MouseSelector extends BaseTool{
             const rect2 = positionShapes[i]
             if(!rect2) return
             if(CollectionSquareToSquare(rect1,rect2)){
-                this.transform.ctx = currentLayer.ctx
-                this.transform.canvas = currentLayer.canvas
+                const {canvas,ctx} = currentLayer
+                this.config.setValue("ctx",ctx)
+                this.config.setValue("canvas",canvas)
 
                 const canvasX = this.mouseX(e.clientX)
                 const canvasY = this.mouseY(e.clientY)
@@ -35,4 +37,4 @@ class MouseSelector extends BaseTool{
     
 }
 
-new MouseSelector()
+export default MouseSelector

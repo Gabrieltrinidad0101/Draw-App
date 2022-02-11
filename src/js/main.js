@@ -9,7 +9,7 @@ import FunctionToExecute from "./canvas/functionToExecute.js";
 import AdvancedColorPicker from "./canvas/canvasColor/advancedColorPicker/advancedColorPicker.js";
 import CanvasLayers from "./canvas/canvasLayers/canvasLayers.js";
 import LineWidth from "./canvas/changeLineWidth/changeLineWidth.js";
-import "./canvas/mouseSelector/mouseSelector.js"
+import MouseSelector from "./canvas/mouseSelector/mouseSelector.js"
 class Canvas{
     constructor(){
         this.containerCanvas = document.querySelector(".containerCanvas");
@@ -34,6 +34,8 @@ class Canvas{
         this.colorPicker = new ColorPicker()
         this.advanceColorPicker = new AdvancedColorPicker()
         this.lineWidth = new LineWidth()
+
+        new MouseSelector()
         
         //set value of default in functionToExecute
         this.functionToExecute.setMouseDownFn(e=>this.paintBrush.mouseDownFn(e),true)
@@ -42,6 +44,7 @@ class Canvas{
 
         //events
         this.canvas.addEventListener("mousedown",e=>{
+            this.canvasLayers.createNewSubLayer()
             this.functionToExecute.runMouseDownFn(e)
         })
         
@@ -50,7 +53,6 @@ class Canvas{
         })
         
         this.canvas.addEventListener("mouseup",e=>{
-            this.canvasLayers.createNewSubLayer()
             this.functionToExecute.runMouseUpFn(e)
         })
     }

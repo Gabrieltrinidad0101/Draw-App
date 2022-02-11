@@ -2,14 +2,17 @@ import Config from "../../config.js";
 import FunctionToExecute from "../functionToExecute.js";
 import SquareInterfaces from "../squareInterfaces/squareInterfaces.js";
 class Transform{
-    constructor(canvas,ctx){
+    constructor(){
         this.config = new Config()
         this.mainCanvas = this.config.getValue("mainCanvas")
-        this.ctx = ctx
-        this.canvas = canvas
         this.canTransform = false
         this.functionToExecute = new FunctionToExecute()
         this.squareInterfaces = new SquareInterfaces()
+    }
+
+    getCanvasAndContext(){
+        this.ctx = this.config.getValue("ctx")
+        this.canvas = this.config.getValue("canvas")
     }
 
     convertSizeNegativeToPositive(x,y,width,height){
@@ -28,6 +31,7 @@ class Transform{
     }
 
     setTransform(x,y,mouseX,mouseY,width,height){
+        this.getCanvasAndContext()
         this.setPositionShapeInConfig(mouseX,mouseY,width,height)
         this.lineWidth = this.config.getValue("lineWidth") + 7
         this.x = x - this.lineWidth / 2
@@ -40,7 +44,8 @@ class Transform{
         this.mainCanvas.addEventListener("mousedown",this.removeSquares)
     }
     
-    removeSquares = _=> {
+    removeSquares = e => {
+        e.stopPropagation()
         this.square1.remove()
         this.mainCanvas.removeEventListener("mousedown",this.removeSquares)
     }
