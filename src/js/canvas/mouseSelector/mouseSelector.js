@@ -15,15 +15,16 @@ class MouseSelector extends BaseTool{
         const positionShapes = this.config.getValue("positionShapes")
         let i = 0
         containerLayers.layers.traverse(currentLayer=>{
-            const rect1 = {x: e.clientX,y: e.clientY,width: 1, height: 1}
-            const {x,y,mouseX,mouseY,width,height} = positionShapes[i]
+            const rect1 = {x: e.clientX,y: e.clientY,width: 0, height: 0}
+            const {x,y,width,height} = positionShapes[i]
             const rect2= {x,y,width,height}
             if(!rect2) return
+            console.log(CollectionSquareToSquare(rect1,rect2))
             if(CollectionSquareToSquare(rect1,rect2)){
                 const {canvas,ctx} = currentLayer
                 this.config.setValue("ctx",ctx)
                 this.config.setValue("canvas",canvas)
-                this.transform.setTransform(x,y,mouseX,mouseY,width,height)
+                this.transform.setTransform(x,y,width,height)
             }
             i += 1
         })

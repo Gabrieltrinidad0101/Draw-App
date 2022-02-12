@@ -1,7 +1,7 @@
 const config = JSON.parse(localStorage.getItem("config")) || {}
 
 //is testing
-config.positionShapes = []
+config.positionShapes = {}
 /////////
 
 class Config{
@@ -21,6 +21,9 @@ class Config{
         this.setValue("color",config.color || `#ff4d4d`)
         this.setValue("lineWidth", config.lineWidth || 10)
         this.setValue("subLayers",[])
+        this.setValue("canMouseDown",true)
+        this.setValue("canMouseMove",true)
+        this.setValue("canMouseUp",true)
     }
 }
 

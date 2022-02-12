@@ -30,8 +30,8 @@ class CanvasLayers{
         const currentLayerId = this.config.getValue("currentLayerId")
         const subLayers = this.layers.get(currentLayerId)
         const layer = this.#Layer()
-        subLayers.layers.add(layer)
         this.config.setValue("currentSubLayerId",subLayers.layers.size)
+        subLayers.layers.add(layer)
     }
 
     #render(){

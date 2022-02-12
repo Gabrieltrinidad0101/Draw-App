@@ -1,7 +1,9 @@
 import FunctionToExecute from "../functionToExecute.js"
 import Config from "../../config.js"
-class BaseTool{
+import Position from "../Position/position.js"
+class BaseTool extends Position{
     constructor(id){
+        super()
         //vars
         this.button = document.getElementById(id)
         this.functionToExecute = new FunctionToExecute()
@@ -14,15 +16,7 @@ class BaseTool{
     getCanvasAndContext(){
         this.ctx = this.config.getValue("ctx")
         this.canvas = this.config.getValue("canvas")
-    }
-
-    mouseX(e){
-        return e.clientX - this.mainCanvas.offsetLeft
-    }
-
-    mouseY(e){
-        return e.clientY - this.mainCanvas.offsetTop
-    }
+    }    
 
     hexToRgbaArray(hexCode,opacity=255){
         let hex = hexCode.replace('#', '');
