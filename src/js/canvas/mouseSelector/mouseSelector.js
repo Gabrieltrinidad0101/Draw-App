@@ -12,24 +12,18 @@ class MouseSelector extends BaseTool{
     
     mouseDownFn(e){
         const containerLayers = this.hashTable.get(this.config.getValue("currentLayerId"))
-
         const positionShapes = this.config.getValue("positionShapes")
         let i = 0
         containerLayers.layers.traverse(currentLayer=>{
             const rect1 = {x: e.clientX,y: e.clientY,width: 1, height: 1}
-            const rect2 = positionShapes[i]
+            const {x,y,mouseX,mouseY,width,height} = positionShapes[i]
+            const rect2= {x,y,width,height}
             if(!rect2) return
             if(CollectionSquareToSquare(rect1,rect2)){
                 const {canvas,ctx} = currentLayer
                 this.config.setValue("ctx",ctx)
                 this.config.setValue("canvas",canvas)
-
-                const canvasX = this.mouseX(e.clientX)
-                const canvasY = this.mouseY(e.clientY)
-                const mouseX = e.clientX
-                const mouseY = e.clientY
-
-                this.transform.setTransform(canvasX,canvasY,mouseX,mouseY,rect2.width,rect2.height)
+                this.transform.setTransform(x,y,mouseX,mouseY,width,height)
             }
             i += 1
         })

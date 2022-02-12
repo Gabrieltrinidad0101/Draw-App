@@ -21,7 +21,6 @@ class Canvas{
 
         this.canvasLayers = new CanvasLayers(this.canvas,this.ctx)
         this.canvasLayers.createNewLayer("canvas")
-        this.canvasLayers.createNewSubLayer()
         
         //class
         this.functionToExecute = new FunctionToExecute()
@@ -37,14 +36,9 @@ class Canvas{
 
         new MouseSelector()
         
-        //set value of default in functionToExecute
-        this.functionToExecute.setMouseDownFn(e=>this.paintBrush.mouseDownFn(e),true)
-        this.functionToExecute.setMouseMoveFn(e=>this.paintBrush.mouseMoveFn(e),true)
-        this.functionToExecute.setMouseUpFn(e=>this.paintBrush.mouseUpFn(e),true)
-
         //events
+        this.canvasLayers.createNewSubLayer()
         this.canvas.addEventListener("mousedown",e=>{
-            this.canvasLayers.createNewSubLayer()
             this.functionToExecute.runMouseDownFn(e)
         })
         

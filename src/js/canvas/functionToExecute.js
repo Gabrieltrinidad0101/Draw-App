@@ -1,6 +1,6 @@
-let mouseDownFn = null
-let mouseMoveFn = null
-let mouseUpFn = null
+let mouseDownFn = _=>{}
+let mouseMoveFn = _=>{}
+let mouseUpFn = _=>{}
 
 class FunctionToExecute{
     setMouseDownFn(fn){

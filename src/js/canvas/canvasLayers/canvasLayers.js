@@ -8,7 +8,6 @@ class CanvasLayers{
         this.config = new Config()
         this.config.setValue("mainCanvas",this.canvas)
         this.config.setValue("mainCtx",this.ctx)
-
         this.#render()
     }
 
