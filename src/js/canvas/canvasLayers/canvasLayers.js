@@ -8,7 +8,6 @@ class CanvasLayers{
         this.config = new Config()
         this.config.setValue("mainCanvas",this.canvas)
         this.config.setValue("mainCtx",this.ctx)
-        this.#render()
     }
 
     #Layer(){
@@ -30,11 +29,11 @@ class CanvasLayers{
         const currentLayerId = this.config.getValue("currentLayerId")
         const subLayers = this.layers.get(currentLayerId)
         const layer = this.#Layer()
-        this.config.setValue("currentSubLayerId",subLayers.layers.size)
         subLayers.layers.add(layer)
+        this.config.setValue("currentSubLayerId",subLayers.layers.size)
     }
 
-    #render(){
+    render(){
         const loop = setInterval(_=>{
             this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height)
             for(let i = 0; i < this.layers.table.size; i++){

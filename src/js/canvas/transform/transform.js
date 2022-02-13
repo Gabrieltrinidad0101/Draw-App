@@ -34,12 +34,12 @@ class Transform extends Position{
 
     centerSquare1(x,y,width,height){
         const [mouseX,mouseY] = this.resetMousePosition(x,y)
-        this.setPositionShapeInConfig(mouseX,mouseY,width,height)
         this.lineWidth = this.config.getValue("lineWidth") + 7
         this.x = x - this.lineWidth / 2
         this.y = y - this.lineWidth / 2
         this.width = width + this.lineWidth
         this.height = height + this.lineWidth
+        this.setPositionShapeInConfig(x,y)
         return this.convertSizeNegativeToPositive(mouseX,mouseY,width ,height)
     }
 
@@ -78,7 +78,7 @@ class Transform extends Position{
     moveShape(e){
         if(!this.canTransform) return
         const newPostion = this.ctx.getImageData(this.x,this.y,this.width,this.height)
-        this.ctx.clearRect(this.x,this.y,this.width,this.height)
+        this.ctx.clearRect(0,0,this.mainCanvas.width,this.mainCanvas.height)
         this.updatePositionSquare(e.movementX,e.movementY)
         const x = this.mouseX(e)
         const y = this.mouseY(e)

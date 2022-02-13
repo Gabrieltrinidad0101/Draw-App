@@ -28,10 +28,19 @@ class LinkList{
         oldTail.next = this.tail
     }
 
+    getById(id){
+        return this.traverse(node=>{
+            if(node.id === id)
+                return node
+        })
+
+    }
+
     traverse(cb){
         let current = this.heap
         while(current){
-            cb(current)
+            const result = cb(current)
+            if(result) return result
             current = current.next
         }
     }
