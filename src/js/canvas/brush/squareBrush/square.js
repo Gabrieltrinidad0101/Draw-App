@@ -17,10 +17,10 @@ class Square{
             this.ctx.stroke()
         }
         this.ctx.closePath();
-        return this.#copyDimesions()
+        return this.copyDimesions()
     }
 
-    #copyDimesions(){
+    copyDimesions(){
         return {x: this.squareDimesions.x,
                 y: this.squareDimesions.y,
                 width: this.squareDimesions.width,

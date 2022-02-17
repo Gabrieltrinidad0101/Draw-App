@@ -1,11 +1,16 @@
 import FunctionToExecute from "../functionToExecute.js"
 import Config from "../../config.js"
 import Position from "../Position/position.js"
+
+let currentTool = null
+let passTool = null
+
 class BaseTool extends Position{
     constructor(id){
         super()
         //vars
         this.button = document.getElementById(id)
+        this.id = id
         this.functionToExecute = new FunctionToExecute()
         this.config = new Config()
         this.mainCanvas = this.config.getValue("mainCanvas")
@@ -49,11 +54,22 @@ class BaseTool extends Position{
         this.ctx.lineJoin = null
     }
 
+    changeTools(){
+        return
+    }
+
+    prevent(cb){
+        cb()
+    }
+
     setFunctions(){
         this.getCanvasAndContext()
-        this.functionToExecute.setMouseDownFn(e=>this.mouseDownFn ? this.mouseDownFn(e) : _=>{})
-        this.functionToExecute.setMouseMoveFn(e=>this.mouseMoveFn ? this.mouseMoveFn(e) : _=>{})
-        this.functionToExecute.setMouseUpFn(e=>this.mouseUpFn ? this.mouseUpFn(e) : _=>{})
+        this.functionToExecute.setMouseDownFn(e=>this.mouseDownFn ? 
+            this.prevent(_=>this.mouseDownFn(e)) : _=>{})
+        this.functionToExecute.setMouseMoveFn(e=>this.mouseMoveFn ?
+            this.prevent(_=>this.mouseMoveFn(e)) : _=>{})
+        this.functionToExecute.setMouseUpFn(e=>this.mouseUpFn ? 
+            this.prevent(_=>this.mouseUpFn(e)): _=>{})
     }
 
 }

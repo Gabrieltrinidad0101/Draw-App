@@ -39,6 +39,7 @@ class Canvas{
         new MouseSelector()
         
         //events
+        this.canvasLayers.createNewSubLayer()
         this.canvas.addEventListener("mousedown",e=>{
             if(this.config.getValue("canMouseDown"))
                  this.canvasLayers.createNewSubLayer()

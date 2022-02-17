@@ -6,7 +6,7 @@ config.positionShapes = {}
 
 class Config{
     constructor(){
-        this.#setDefaultValue()
+        this.setDefaultValue()
     }
     setValue(key,value){
         config[key] = value
@@ -17,7 +17,7 @@ class Config{
         return config[key]
     }
 
-    #setDefaultValue(){
+    setDefaultValue(){
         this.setValue("color",config.color || `#ff4d4d`)
         this.setValue("lineWidth", config.lineWidth || 10)
         this.setValue("subLayers",[])

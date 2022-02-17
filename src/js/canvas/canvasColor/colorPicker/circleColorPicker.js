@@ -4,14 +4,14 @@ class CircleColorPicker{
     }
 
 
-    #circle(){
+    circle(){
         this.div = document.createElement("div")
         this.div.className = "circlerColorPickerStart"
         return this.div
     }
     
     createCircle(){
-        this.body.appendChild(this.#circle())
+        this.body.appendChild(this.circle())
     }
     
     showCircle(x,y,background){

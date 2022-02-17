@@ -46,22 +46,33 @@ class Transform extends Position{
     setTransform(x,y,width,height){   
         this.getCanvasAndContext()
         const [newPositionX,newPositionY,newWidth,newHeight] = this.centerSquare1(x,y,width,height)
-        this.square1 = this.#createSquare(newPositionX,newPositionY,newWidth,newHeight,false)
-        this.eventsOfSquares()
+        this.square1 = this.createSquare(newPositionX,newPositionY,newWidth,newHeight,false)
+        this.setSquaresEvents()
     }
 
-    eventsOfSquares(){
+    
+    setSquaresEvents = _ => {
         this.square1.addEventListener("mousemove",e=>this.moveShape(e))
-        this.mainCanvas.addEventListener("mousedown",this.removeSquares) 
+        this.mainCanvas.addEventListener("mousedown",_=>this.hiddenSquare())
+    }
+
+    hiddenSquare(){
+        this.square1.style.display = "none"
+    }
+
+    showSquare(){
+        this.square1.style.display = "block"
     }
     
-    removeSquares = e => {
+    removeSquaresEvents = e => {
         e.stopPropagation()
-        this.square1.remove()
+        this.square1.style.display = "none"
         this.mainCanvas.removeEventListener("mousedown",this.removeSquares)
     }
+
+
     
-    #createSquare(x,y,width,height,center=true){
+    createSquare(x,y,width,height,center=true){
         const square = this.squareInterfaces.create(x,y,width,height)
         square.addEventListener("mousedown",_=>this.canTransform = true)
         square.addEventListener("mouseup",_=>this.canTransform = false)
