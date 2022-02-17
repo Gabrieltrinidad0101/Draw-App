@@ -14,7 +14,7 @@ class BaseTool extends Position{
         this.functionToExecute = new FunctionToExecute()
         this.config = new Config()
         this.mainCanvas = this.config.getValue("mainCanvas")
-        this.button.addEventListener("click",_=>this.setFunctions())
+        this.button.addEventListener("click",e=>this.setFunctions(e))
         this.getCanvasAndContext()
     }
 
@@ -62,7 +62,8 @@ class BaseTool extends Position{
         cb()
     }
 
-    setFunctions(){
+    setFunctions(e){
+        this.click ? this.click(e) : ""
         this.getCanvasAndContext()
         this.functionToExecute.setMouseDownFn(e=>this.mouseDownFn ? 
             this.prevent(_=>this.mouseDownFn(e)) : _=>{})

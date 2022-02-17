@@ -23,6 +23,7 @@ class Canvas{
 
         this.canvasLayers = new CanvasLayers(this.canvas,this.ctx)
         this.canvasLayers.createNewLayer("canvas")
+        this.canvasLayers.createNewSubLayer()
         this.canvasLayers.render()
         //class
         this.functionToExecute = new FunctionToExecute()
@@ -39,7 +40,6 @@ class Canvas{
         new MouseSelector()
         
         //events
-        this.canvasLayers.createNewSubLayer()
         this.canvas.addEventListener("mousedown",e=>{
             if(this.config.getValue("canMouseDown"))
                  this.canvasLayers.createNewSubLayer()

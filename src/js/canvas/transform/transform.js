@@ -53,17 +53,9 @@ class Transform extends Position{
     
     setSquaresEvents = _ => {
         this.square1.addEventListener("mousemove",e=>this.moveShape(e))
-        this.mainCanvas.addEventListener("mousedown",_=>this.hiddenSquare())
+        this.mainCanvas.addEventListener("mousedown",e=>this.removeSquaresEvents(e))
     }
 
-    hiddenSquare(){
-        this.square1.style.display = "none"
-    }
-
-    showSquare(){
-        this.square1.style.display = "block"
-    }
-    
     removeSquaresEvents = e => {
         e.stopPropagation()
         this.square1.style.display = "none"

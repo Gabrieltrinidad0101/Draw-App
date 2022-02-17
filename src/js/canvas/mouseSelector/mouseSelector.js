@@ -10,9 +10,14 @@ class MouseSelector extends BaseTool{
         this.hashTable = new HashTable()
     }
 
-    mouseDownFn(e){
-    } 
-    
+    click(){
+        const squaresInterfaces = document.querySelectorAll(".squareInterfaces")
+        squaresInterfaces.forEach(squareInterfaces=>{
+            squareInterfaces.style.display = "block"
+            squareInterfaces.style.opacity = "0"
+            squareInterfaces.addEventListener("mousedown",_=>squareInterfaces.style.opacity = "1")
+        })
+    }
 }
 
 export default MouseSelector
