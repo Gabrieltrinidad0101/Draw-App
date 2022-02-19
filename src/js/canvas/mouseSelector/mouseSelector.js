@@ -8,6 +8,17 @@ class MouseSelector extends BaseTool{
     constructor(){
         super("mouseSelector")
         this.hashTable = new HashTable()
+        
+    }
+
+    setSquareInterfaces(squareInterfaces){
+        const hasSquareInterfaces = document.querySelector(".hasSquareInterfaces")
+        if(hasSquareInterfaces){
+            hasSquareInterfaces.style.opacity = "0"
+            hasSquareInterfaces.classList.remove("hasSquareInterfaces")
+        }
+        squareInterfaces.style.opacity = "1"
+        squareInterfaces.classList.add("hasSquareInterfaces")
     }
 
     click(){
@@ -15,7 +26,7 @@ class MouseSelector extends BaseTool{
         squaresInterfaces.forEach(squareInterfaces=>{
             squareInterfaces.style.display = "block"
             squareInterfaces.style.opacity = "0"
-            squareInterfaces.addEventListener("mousedown",_=>squareInterfaces.style.opacity = "1")
+            squareInterfaces.addEventListener("mousedown",_=> this.setSquareInterfaces(squareInterfaces))
         })
     }
 }

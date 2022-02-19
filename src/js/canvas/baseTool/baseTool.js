@@ -2,8 +2,6 @@ import FunctionToExecute from "../functionToExecute.js"
 import Config from "../../config.js"
 import Position from "../Position/position.js"
 
-let currentTool = null
-let passTool = null
 
 class BaseTool extends Position{
     constructor(id){
