@@ -1,7 +1,11 @@
 import PaintBrush from "../paintBrush/paintBrush.js"
 class LineBrush extends PaintBrush{
     constructor(){
-        super("lineBrush")
+        const button = {
+            tag: "button",
+            innerHTML: `"\"`
+        }
+        super("\\")
         this.canDraw = false
     }
     

@@ -1,9 +1,14 @@
 import Square from "./square.js";
 import BaseTool from "../../baseTool/baseTool.js";
 import Transform from "../../transform/transform.js"
+
 class SquareBrush extends BaseTool{
     constructor(){
-        super("squareBrush")
+        const button = {
+            tag: "button",
+            innerHTML: `<i class="far fa-square">`,
+        }
+        super(button,"leftTools")
         this.canDraw = false
         this.canSetTransform = false
     }
@@ -16,7 +21,6 @@ class SquareBrush extends BaseTool{
     render({x,y,width,height}){
         this.square.create(x,y,width,height)
     }
-
 
     mouseDownFn(e){
         this.getCanvasAndContext()
@@ -55,11 +59,6 @@ class SquareBrush extends BaseTool{
             this.render(squareNewDimension)
         })
     }
-
-
-
-
-
 }
 
 export default SquareBrush

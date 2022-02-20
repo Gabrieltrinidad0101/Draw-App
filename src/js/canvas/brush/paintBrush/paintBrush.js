@@ -1,8 +1,12 @@
 import BaseTool from "../../baseTool/baseTool.js"
 
 class PaintBrush extends BaseTool{
-    constructor(id="paintBrush"){
-        super(id)
+    constructor(icon){
+        const button = {
+            tag: "button",
+            innerHTML: icon ? icon : `<i class="fas fa-paint-brush"></i>`,
+        }
+        super(button,"leftTools")
     }
 
     mouseDownFn = e =>{

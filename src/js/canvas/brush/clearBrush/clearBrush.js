@@ -1,7 +1,7 @@
 import PaintBrush from "../paintBrush/paintBrush.js"
 class ClearBrush extends PaintBrush{
     constructor(){
-        super("clearBrush")
+        super(`<i class="fas fa-eraser">`)
     }
     
     styleLine = _=>{

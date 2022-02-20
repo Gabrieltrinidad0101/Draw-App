@@ -2,7 +2,11 @@ import BaseTool from "../../baseTool/baseTool.js"
 import FloodFile from "./floodFile.js"
 class FillerBrush extends BaseTool{
     constructor(){
-        super("fillTool")
+        const button = {
+            tag: "button",
+            innerHTML: `<i class="fas fa-fill-drip">`,
+        }
+        super(button,"leftTools")
         this.floodFile = new FloodFile(this.ctx)
     }
 

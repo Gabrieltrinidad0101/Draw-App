@@ -3,7 +3,7 @@ import SquareInterfaces from "../../squareInterfaces/squareInterfaces.js";
 import { CollectionSquareToSquare } from "../../collisions/squareToSquare.js";
 class MultiBrush extends PaintBrush{
     constructor(){
-        super("multiBrush") 
+        super(`<i class="fas fa-brush">`)
         this.squareIsCreate = false
         this.square = new SquareInterfaces()
     }
