@@ -13,6 +13,10 @@ class SquareBrush extends BaseTool{
         this.transform =  new Transform(this.canvas,this.ctx) 
     }
 
+    render({x,y,width,height}){
+        this.square.create(x,y,width,height)
+    }
+
 
     mouseDownFn(e){
         this.getCanvasAndContext()
@@ -35,7 +39,8 @@ class SquareBrush extends BaseTool{
             this.ctx.putImageData(this.background,0,0)
             const [width,height] = this.getWidthAndHeiht(e)
             this.styleLine()
-            this.square.create(this.posStartX,this.posStartY,width,height)
+            const square = {x: this.posStartX,y: this.posStartY,width,height} 
+            this.render(square)
         }
     }
 
@@ -43,7 +48,12 @@ class SquareBrush extends BaseTool{
         this.canDraw = false
         if(!this.canSetTransform) return
         const [width,height] = this.getWidthAndHeiht(e)
-        this.transform.setTransform(this.posStartX,this.posStartY,width,height)
+        const square = {x: this.posStartX,y: this.posStartY,width,height}
+        this.transform.setTransform(square,squareNewDimension=>{
+            this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height)
+            this.styleLine()
+            this.render(squareNewDimension)
+        })
     }
 
 

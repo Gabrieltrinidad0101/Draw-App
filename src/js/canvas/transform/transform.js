@@ -1,20 +1,16 @@
-import Config from "../../config.js";
+import GlobalVariables from "../../globalVariables.js";
 import FunctionToExecute from "../functionToExecute.js";
 import SquareInterfaces from "../squareInterfaces/squareInterfaces.js";
 import Position from "../Position/position.js";
+
 class Transform extends Position{
     constructor(){
         super();
-        this.config = new Config()
-        this.mainCanvas = this.config.getValue("mainCanvas")
+        this.globalVariables = new GlobalVariables()
+        this.mainCanvas = this.globalVariables.getValue("mainCanvas")
         this.canTransform = false
         this.functionToExecute = new FunctionToExecute()
         this.squareInterfaces = new SquareInterfaces()
-    }
-
-    getCanvasAndContext(){
-        this.ctx = this.config.getValue("ctx")
-        this.canvas = this.config.getValue("canvas")
     }
 
     convertSizeNegativeToPositive(x,y,width,height){
@@ -25,26 +21,18 @@ class Transform extends Position{
         return [newPositionX,newPositionY,newWidth,newHeight]
     }
 
-    setPositionShapeInConfig(x,y){
-        const positionShape = {x,y,width: this.width - this.lineWidth,height: this.height - this.lineWidth,id: this.config.getValue("currentSubLayerId")}
-        const positionShapes = this.config.getValue("positionShapes") ?? {}
-        positionShapes[positionShape.id] = positionShape
-        this.config.setValue("positionShapes",positionShapes)
-    }
-
     centerSquare1(x,y,width,height){
         const [mouseX,mouseY] = this.resetMousePosition(x,y)
-        this.lineWidth = this.config.getValue("lineWidth") + 7
-        this.x = x - this.lineWidth / 2
-        this.y = y - this.lineWidth / 2
-        this.width = width + this.lineWidth
-        this.height = height + this.lineWidth
-        this.setPositionShapeInConfig(x,y)
+        this.lineWidth = this.globalVariables.getValue("lineWidth") + 7
+        this.x = x
+        this.y = y
+        this.width = width
+        this.height = height
         return this.convertSizeNegativeToPositive(mouseX,mouseY,width ,height)
     }
 
-    setTransform(x,y,width,height){   
-        this.getCanvasAndContext()
+    setTransform({x,y,width,height},cb){
+        this.render = squareNewDimension=>cb(squareNewDimension)
         const [newPositionX,newPositionY,newWidth,newHeight] = this.centerSquare1(x,y,width,height)
         this.square1 = this.createSquare(newPositionX,newPositionY,newWidth,newHeight,false)
         this.setSquaresEvents()
@@ -80,15 +68,11 @@ class Transform extends Position{
 
     moveShape(e){
         if(!this.canTransform) return
-        const newPostion = this.ctx.getImageData(this.x,this.y,this.width,this.height)
-        this.ctx.clearRect(0,0,this.mainCanvas.width,this.mainCanvas.height)
         this.updatePositionSquare(e.movementX,e.movementY)
-        const x = this.mouseX(e)
-        const y = this.mouseY(e)
-        this.setPositionShapeInConfig(x,y)
         this.x += e.movementX
         this.y += e.movementY
-        this.ctx.putImageData(newPostion,this.x,this.y)
+        const square = {x: this.x,y: this.y,width: this.width, height: this.height}
+        this.render(square)
     }
 
 }

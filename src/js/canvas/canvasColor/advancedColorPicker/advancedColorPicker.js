@@ -1,4 +1,4 @@
-import Config from "../../../config.js"
+import Config from "../../../globalVariables.js"
 class AdvanceColorPicker{
     constructor(){
         this.colorPicker = document.getElementById("advancedColorPicker")

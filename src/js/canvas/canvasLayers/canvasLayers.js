@@ -1,5 +1,5 @@
 import HashTable from "../hashTable/hashTable.js"
-import Config from "../../config.js";
+import Config from "../../globalVariables.js";
 class CanvasLayers{
     constructor(canvas,ctx){
         this.canvas = canvas

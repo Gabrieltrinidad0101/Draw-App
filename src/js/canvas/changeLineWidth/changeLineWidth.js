@@ -1,17 +1,17 @@
-import Config from "../../config.js"
+import GlobalVariables from "../../globalVariables.js"
 class LineWidth{
     constructor(){
         this.range = document.getElementById("rangeWidthLine")
 
         //class
-        this.config = new Config();
-        this.range.value = this.config.getValue("lineWidth")
+        this.globalVariables = new GlobalVariables();
+        this.range.value = this.globalVariables.getValue("lineWidth")
         this.range.addEventListener("input",_=>this.updateWidth())
     }
 
     updateWidth(){
         const width = this.range.value
-        this.config.setValue("lineWidth",parseInt(width))
+        this.globalVariables.setValue("lineWidth",parseInt(width))
     }
 
 }

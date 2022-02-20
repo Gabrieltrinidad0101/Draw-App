@@ -1,5 +1,5 @@
 import FunctionToExecute from "../functionToExecute.js"
-import Config from "../../config.js"
+import GlobalVariables from "../../globalVariables.js"
 import Position from "../Position/position.js"
 
 
@@ -10,15 +10,15 @@ class BaseTool extends Position{
         this.button = document.getElementById(id)
         this.id = id
         this.functionToExecute = new FunctionToExecute()
-        this.config = new Config()
-        this.mainCanvas = this.config.getValue("mainCanvas")
+        this.globalVariables = new GlobalVariables()
+        this.mainCanvas = this.globalVariables.getValue("mainCanvas")
         this.button.addEventListener("click",e=>this.setFunctions(e))
         this.getCanvasAndContext()
     }
 
     getCanvasAndContext(){
-        this.ctx = this.config.getValue("ctx")
-        this.canvas = this.config.getValue("canvas")
+        this.ctx = this.globalVariables.getValue("ctx")
+        this.canvas = this.globalVariables.getValue("canvas")
     }    
 
     hexToRgbaArray(hexCode,opacity=255){
@@ -37,8 +37,8 @@ class BaseTool extends Position{
 
     styleLine = _=>{
         this.ctx.save()
-        this.ctx.strokeStyle = this.config.getValue("color")
-        this.ctx.lineWidth = this.config.getValue("lineWidth")
+        this.ctx.strokeStyle = this.globalVariables.getValue("color")
+        this.ctx.lineWidth = this.globalVariables.getValue("lineWidth")
         this.ctx.lineCap = "round"
         this.ctx.lineJoin = "round"
         this.ctx.stroke()

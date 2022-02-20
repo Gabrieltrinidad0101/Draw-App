@@ -49,8 +49,8 @@ class MultiBrush extends PaintBrush{
 
     makeSquare(x,y){
         const paddingOfSquare = 10
-        const width = this.config.getValue("lineWidth") + paddingOfSquare
-        const height = this.config.getValue("lineWidth") + paddingOfSquare
+        const width = this.globalVariables.getValue("lineWidth") + paddingOfSquare
+        const height = this.globalVariables.getValue("lineWidth") + paddingOfSquare
         this.endMultiBrush = this.square.create(x,y,width,height,true)
         this.endMultiBrush.style.pointerEvents = "none";
     }

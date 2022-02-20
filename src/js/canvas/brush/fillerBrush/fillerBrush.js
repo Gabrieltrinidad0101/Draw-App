@@ -7,7 +7,7 @@ class FillerBrush extends BaseTool{
     }
 
     mouseDownFn = e =>{
-        const rgbaString = this.config.getValue("color")
+        const rgbaString = this.globalVariables.getValue("color")
         const rgbaArray = this.hexToRgbaArray(rgbaString)
         this.floodFile.flood(this.mouseX(e),this.mouseY(e),rgbaArray)
     }

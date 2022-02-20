@@ -10,7 +10,7 @@ import AdvancedColorPicker from "./canvas/canvasColor/advancedColorPicker/advanc
 import CanvasLayers from "./canvas/canvasLayers/canvasLayers.js";
 import LineWidth from "./canvas/changeLineWidth/changeLineWidth.js";
 import MouseSelector from "./canvas/mouseSelector/mouseSelector.js";
-import Config from "./config.js";
+import GlobalVariables from "./globalVariables.js";
 
 class Canvas{
     constructor(){
@@ -36,23 +36,23 @@ class Canvas{
         this.colorPicker = new ColorPicker()
         this.advanceColorPicker = new AdvancedColorPicker()
         this.lineWidth = new LineWidth()
-        this.config = new Config()
+        this.globalVariables = new GlobalVariables()
         new MouseSelector()
         
         //events
         this.canvas.addEventListener("mousedown",e=>{
-            if(this.config.getValue("canMouseDown"))
-                 //this.canvasLayers.createNewSubLayer()
+            if(this.globalVariables.getValue("canMouseDown"))
+                 this.canvasLayers.createNewSubLayer()
                  this.functionToExecute.runMouseDownFn(e)
         })
         
         this.canvas.addEventListener("mousemove",e=>{
-            if(this.config.getValue("canMouseMove"))
+            if(this.globalVariables.getValue("canMouseMove"))
                 this.functionToExecute.runMouseMoveFn(e)
         })
         
         this.canvas.addEventListener("mouseup",e=>{
-            if(this.config.getValue("canMouseUp"))
+            if(this.globalVariables.getValue("canMouseUp"))
                 this.functionToExecute.runMouseUpFn(e)
         })
     }

@@ -6,7 +6,7 @@ class ClearBrush extends PaintBrush{
     
     styleLine = _=>{
         this.ctx.strokeStyle = "white"
-        this.ctx.lineWidth = this.config.getValue("lineWidth")
+        this.ctx.lineWidth = this.globalVariables.getValue("lineWidth")
         this.ctx.stroke()
     }
 }

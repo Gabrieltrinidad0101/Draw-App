@@ -15,7 +15,7 @@ class ColorPicker extends BaseTool{
         this.canDraw = false
     }
 
-    colorSelectionOnCanvasAndSaveInConfig(e){
+    colorSelectionOnCanvasAndSaveInGlobalVariables(e){
         const arrayColor = this.ctx.getImageData(this.mouseX(e),this.mouseY(e),1,1).data
         const rgba = this.arrayToRgba(arrayColor)
         this.advanceColorPicker.setColor(rgba)
@@ -24,15 +24,15 @@ class ColorPicker extends BaseTool{
 
 
     mouseDownFn(e){
-        this.canvas = this.config.getValue("mainCanvas")
-        this.ctx = this.config.getValue("mainCtx")
+        this.canvas = this.globalVariables.getValue("mainCanvas")
+        this.ctx = this.globalVariables.getValue("mainCtx")
         this.canDraw = true
-        this.colorSelectionOnCanvasAndSaveInConfig(e)
+        this.colorSelectionOnCanvasAndSaveInGlobalVariables(e)
     }
 
     mouseMoveFn(e){
         if(this.canDraw){
-            this.colorSelectionOnCanvasAndSaveInConfig(e)
+            this.colorSelectionOnCanvasAndSaveInGlobalVariables(e)
         }
     }
 
