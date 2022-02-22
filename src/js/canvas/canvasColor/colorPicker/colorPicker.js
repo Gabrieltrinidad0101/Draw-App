@@ -1,10 +1,11 @@
 import BaseTool from "../../baseTool/baseTool.js";
 import AdvanceColorPicker from "../advancedColorPicker/advancedColorPicker.js";
 import CircleColorPicker from "./circleColorPicker.js"
-
+import colorPickerButton from "./colorPickerButton.js";
 class ColorPicker extends BaseTool{
     constructor(){
-        super("colorPicker")
+        const button = colorPickerButton()
+        super(button)
         this.advanceColorPicker = new AdvanceColorPicker()
         this.circleColorPicker = new CircleColorPicker()
 

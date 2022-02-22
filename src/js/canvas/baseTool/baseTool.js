@@ -1,17 +1,14 @@
 import FunctionToExecute from "../functionToExecute.js"
 import GlobalVariables from "../../globalVariables.js"
 import Position from "../Position/position.js"
-import ButtonTool from "../buttonTool/buttonTool.js"
 class BaseTool extends Position{
-    constructor(button,windowId){
+    constructor(button){
         super()
         //vars
-        const buttonTool =  new ButtonTool()
         this.functionToExecute = new FunctionToExecute()
         this.globalVariables = new GlobalVariables()
-        const newButton = buttonTool.create(button,windowId)
         this.mainCanvas = this.globalVariables.getValue("mainCanvas")
-        newButton.addEventListener("click",e=>this.setFunctions(e))
+        button.addEventListener("click",e=>this.setFunctions(e))
         this.getCanvasAndContext()
     }
 

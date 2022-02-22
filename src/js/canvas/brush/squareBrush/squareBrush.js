@@ -1,14 +1,11 @@
 import Square from "./square.js";
 import BaseTool from "../../baseTool/baseTool.js";
 import Transform from "../../transform/transform.js"
-
+import squareButton from "./squareButton.js";
 class SquareBrush extends BaseTool{
     constructor(){
-        const button = {
-            tag: "button",
-            innerHTML: `<i class="far fa-square">`,
-        }
-        super(button,"leftTools")
+        const button = squareButton()
+        super(button)
         this.canDraw = false
         this.canSetTransform = false
     }

@@ -26,18 +26,18 @@ class Canvas{
         this.canvasLayers.createNewSubLayer()
         this.canvasLayers.render()
         //class
+        new MouseSelector()
+        new PaintBrush()
+        new ClearBrush()
+        new FillerBrush()
+        new MultiBrush()
+        new LineBrush()
+        new SquareBrush()
+        new ColorPicker()
         this.functionToExecute = new FunctionToExecute()
-        this.paintBrush = new PaintBrush()
-        this.clearBrush = new ClearBrush()
-        this.fillerBrush = new FillerBrush()
-        this.multiBrush = new MultiBrush()
-        this.lineBrush = new LineBrush()
-        this.squareBrush = new SquareBrush()
-        this.colorPicker = new ColorPicker()
         this.advanceColorPicker = new AdvancedColorPicker()
         this.lineWidth = new LineWidth()
         this.globalVariables = new GlobalVariables()
-        new MouseSelector()
         
         //events
         this.canvas.addEventListener("mousedown",e=>{

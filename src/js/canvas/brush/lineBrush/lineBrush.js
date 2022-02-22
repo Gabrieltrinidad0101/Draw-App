@@ -1,11 +1,9 @@
-import PaintBrush from "../paintBrush/paintBrush.js"
-class LineBrush extends PaintBrush{
+import BaseTool from "../../baseTool/baseTool.js"
+import lineButton from "./lineButton.js"
+class LineBrush extends BaseTool{
     constructor(){
-        const button = {
-            tag: "button",
-            innerHTML: `"\"`
-        }
-        super("\\")
+        const button = lineButton()
+        super(button)
         this.canDraw = false
     }
     

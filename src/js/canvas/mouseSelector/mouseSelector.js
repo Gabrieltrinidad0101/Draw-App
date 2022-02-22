@@ -1,8 +1,9 @@
 import BaseTool from "../baseTool/baseTool.js"
-
+import mouseSelectorButton from "./mouseSelectorButton.js"
 class MouseSelector extends BaseTool{
     constructor(){
-        super("mouseSelector")
+        const button = mouseSelectorButton()
+        super(button)
     }
 
     setSquareInterfaces(squareInterfaces){

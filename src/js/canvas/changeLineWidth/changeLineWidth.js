@@ -1,7 +1,8 @@
 import GlobalVariables from "../../globalVariables.js"
+import changeLineWidthButton from "./changeLineWidthButton.js";
 class LineWidth{
     constructor(){
-        this.range = document.getElementById("rangeWidthLine")
+        this.range = changeLineWidthButton()
 
         //class
         this.globalVariables = new GlobalVariables();
