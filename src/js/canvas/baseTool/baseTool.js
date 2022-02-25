@@ -1,15 +1,36 @@
 import FunctionToExecute from "../functionToExecute.js"
 import GlobalVariables from "../../globalVariables.js"
 import Position from "../Position/position.js"
+
+const buttons = []
+let currentButton = null
 class BaseTool extends Position{
     constructor(button){
         super()
         //vars
+        this.button = button
         this.functionToExecute = new FunctionToExecute()
         this.globalVariables = new GlobalVariables()
         this.mainCanvas = this.globalVariables.getValue("mainCanvas")
-        button.addEventListener("click",e=>this.setFunctions(e))
+        this.button.addEventListener("click",e=>this.setFunctions(e))
         this.getCanvasAndContext()
+        buttons.push(this.button)
+    }
+    
+    changeTool(cb){
+        currentButton = this.button
+        buttons.forEach(button=>{
+            const callBack = _=>{
+                if(currentButton === "finish"){
+                    button.removeEventListener("click",callBack)
+                    return
+                }
+                if(currentButton === button) return
+                cb()
+                currentButton = "finish"
+            }
+            button.addEventListener("click",callBack)
+        })
     }
 
     getCanvasAndContext(){
@@ -46,10 +67,6 @@ class BaseTool extends Position{
         this.ctx.lineWidth = 1
         this.ctx.lineCap = null
         this.ctx.lineJoin = null
-    }
-
-    changeTools(){
-        return
     }
 
     prevent(cb){

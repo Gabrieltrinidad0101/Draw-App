@@ -6,6 +6,7 @@ class MouseSelector extends BaseTool{
         super(button)
     }
 
+
     setSquareInterfaces(squareInterfaces){
         const hasSquareInterfaces = document.querySelector(".hasSquareInterfaces")
         if(hasSquareInterfaces){
@@ -16,7 +17,12 @@ class MouseSelector extends BaseTool{
         squareInterfaces.classList.add("hasSquareInterfaces")
     }
 
+    test= _=>{
+        console.log("ok")
+    }
+
     click(){
+        this.changeTool(_=>this.test())
         const squaresInterfaces = document.querySelectorAll(".squareInterfaces")
         squaresInterfaces.forEach(squareInterfaces=>{
             squareInterfaces.style.display = "block"
